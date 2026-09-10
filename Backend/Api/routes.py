@@ -1,100 +1,91 @@
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
-from sqlalchemy.sql import func
-from Functions.db_config import get_db
-from Functions.models import QuestionnaireDB, QuestionDB, ReponseDB, UtilisateurDB, ParticipationDB
-from Api.schemas import QuestionnaireCreate, QuestionCreate, ReponseCreate, UtilisateurCreate, ParticipationCreate
+from sqlalchemy import func, select, text
+from sqlalchemy.orm import Session, selectinload
+from ..Functions.db_config import IS_SQLITE, get_db
+from ..Functions.models import QuestionnaireDB, QuestionDB, ReponseDB, UtilisateurDB, ParticipationDB
+from .schemas import QuestionnaireCreate, ParticipationCreate
 
-router = APIRouter()
+router = APIRouter(prefix="/api")
 
+def quiz_query():
+    return select(QuestionnaireDB).options(
+        selectinload(QuestionnaireDB.questions).selectinload(QuestionDB.reponses),
+        selectinload(QuestionnaireDB.createur))
 
-# --- ROUTES UTILISATEURS ---
-@router.post("/utilisateurs/")
-def create_utilisateur(user: UtilisateurCreate, db: Session = Depends(get_db)):
-    db_user = UtilisateurDB(Username=user.Username)
-    db.add(db_user)
-    db.commit()
-    db.refresh(db_user)
-    return db_user
+def playable(quiz):
+    return bool(quiz.questions) and all(
+        2 <= len(q.reponses) <= 6 and sum(a.Is_Correct == "Vrai" for a in q.reponses) == 1
+        for q in quiz.questions)
 
+def summary(quiz, plays=0):
+    return {"ID": quiz.ID, "Name": quiz.Name, "Type": quiz.Type,
+            "auteur": quiz.createur.Username if quiz.createur else "Anonyme",
+            "question_count": len(quiz.questions), "participations": plays,
+            "Note_Moyenne": quiz.Note_Moyenne or 0, "playable": playable(quiz)}
 
-@router.get("/utilisateurs/")
-def get_utilisateurs(db: Session = Depends(get_db)):
-    return db.query(UtilisateurDB).all()
-
-
-# --- ROUTES QUESTIONNAIRES ---
-@router.post("/quiz/")
-def create_quiz(quiz: QuestionnaireCreate, db: Session = Depends(get_db)):
-    db_quiz = QuestionnaireDB(
-        Name=quiz.Name,
-        Type=quiz.Type,
-        ID_Utilisateur=quiz.ID_Utilisateur
-    )
-    db.add(db_quiz)
-    db.commit()
-    db.refresh(db_quiz)
-    return db_quiz
-
+@router.get("/health")
+def health(db: Session = Depends(get_db)):
+    db.execute(text("SELECT 1"))
+    return {"status": "ok", "database": "SQLite" if IS_SQLITE else "MySQL"}
 
 @router.get("/quiz/")
 def get_quizzes(db: Session = Depends(get_db)):
-    return db.query(QuestionnaireDB).all()
+    counts = dict(db.execute(select(ParticipationDB.ID_Questionnaire, func.count())
+                            .group_by(ParticipationDB.ID_Questionnaire)).all())
+    return [summary(q, counts.get(q.ID, 0)) for q in db.scalars(quiz_query().order_by(QuestionnaireDB.ID.desc()))]
 
-
-@router.post("/quiz/{quiz_id}/questions/")
-def add_question(quiz_id: int, question: QuestionCreate, db: Session = Depends(get_db)):
-    db_quiz = db.query(QuestionnaireDB).filter(QuestionnaireDB.ID == quiz_id).first()
-    if not db_quiz:
-        raise HTTPException(status_code=404, detail="Questionnaire non trouvé")
-
-    db_question = QuestionDB(Question=question.Question, ID_Questio=quiz_id)
-    db.add(db_question)
+@router.post("/quiz/", status_code=201)
+def create_quiz(payload: QuestionnaireCreate, db: Session = Depends(get_db)):
+    # One transaction: no half-created quiz if a question is invalid.
+    user = UtilisateurDB(Username=payload.Username)
+    quiz = QuestionnaireDB(Name=payload.Name, Type=payload.Type, createur=user)
+    for question in payload.questions:
+        quiz.questions.append(QuestionDB(Question=question.Question, reponses=[
+            ReponseDB(Rep=a.Rep, Is_Correct=a.Is_Correct) for a in question.reponses]))
+    db.add(quiz)
     db.commit()
-    db.refresh(db_question)
-    return db_question
+    db.refresh(quiz)
+    return summary(quiz)
 
+@router.get("/quiz/{quiz_id}")
+def get_quiz(quiz_id: int, db: Session = Depends(get_db)):
+    quiz = db.scalar(quiz_query().where(QuestionnaireDB.ID == quiz_id))
+    if not quiz:
+        raise HTTPException(404, "Questionnaire introuvable.")
+    if not playable(quiz):
+        raise HTTPException(409, "Ce questionnaire ne contient pas encore de questions jouables.")
+    return {**summary(quiz), "questions": [
+        {"ID": q.ID, "Question": q.Question,
+         "reponses": [{"ID": a.ID, "Rep": a.Rep} for a in sorted(q.reponses, key=lambda a: a.ID)]}
+        for q in sorted(quiz.questions, key=lambda q: q.ID)]}
 
-@router.post("/questions/{question_id}/reponses/")
-def add_reponse(question_id: int, reponse: ReponseCreate, db: Session = Depends(get_db)):
-    db_question = db.query(QuestionDB).filter(QuestionDB.ID == question_id).first()
-    if not db_question:
-        raise HTTPException(status_code=404, detail="Question non trouvée")
-
-    if reponse.Is_Correct not in ['Vrai', 'Faux']:
-        raise HTTPException(status_code=400, detail="Is_Correct doit être 'Vrai' ou 'Faux'")
-
-    db_reponse = ReponseDB(Rep=reponse.Rep, ID_Questions=question_id, Is_Correct=reponse.Is_Correct)
-    db.add(db_reponse)
-    db.commit()
-    db.refresh(db_reponse)
-    return db_reponse
-
-
-# --- ROUTE PARTICIPATIONS ET NOTES ---
 @router.post("/quiz/{quiz_id}/participer/")
-def submit_score(quiz_id: int, participation: ParticipationCreate, db: Session = Depends(get_db)):
-    # 1. Vérifier si le questionnaire et l'utilisateur existent
-    db_quiz = db.query(QuestionnaireDB).filter(QuestionnaireDB.ID == quiz_id).first()
-    if not db_quiz:
-        raise HTTPException(status_code=404, detail="Questionnaire non trouvé")
-
-    db_user = db.query(UtilisateurDB).filter(UtilisateurDB.ID == participation.ID_Utilisateur).first()
-    if not db_user:
-        raise HTTPException(status_code=404, detail="Utilisateur non trouvé")
-
-    # 2. Enregistrer la participation
-    db_participation = ParticipationDB(
-        ID_Utilisateur=participation.ID_Utilisateur,
-        ID_Questionnaire=quiz_id,
-        Score=participation.Score
-    )
-    db.add(db_participation)
+def submit_answers(quiz_id: int, payload: ParticipationCreate, db: Session = Depends(get_db)):
+    # Serialize submissions on MySQL so the cached average stays consistent.
+    quiz = db.scalar(quiz_query().where(QuestionnaireDB.ID == quiz_id).with_for_update())
+    if not quiz:
+        raise HTTPException(404, "Questionnaire introuvable.")
+    if not playable(quiz):
+        raise HTTPException(409, "Questionnaire incomplet.")
+    answers = {a.question_id: a.reponse_id for a in payload.answers}
+    if len(answers) != len(payload.answers) or set(answers) != {q.ID for q in quiz.questions}:
+        raise HTTPException(422, "Envoie une réponse par question du questionnaire.")
+    corrections = []
+    for q in sorted(quiz.questions, key=lambda q: q.ID):
+        chosen = answers[q.ID]
+        if chosen is not None and chosen not in {a.ID for a in q.reponses}:
+            raise HTTPException(422, "Une réponse n'appartient pas à sa question.")
+        good = next(a for a in q.reponses if a.Is_Correct == "Vrai")
+        selected = next((a for a in q.reponses if a.ID == chosen), None)
+        corrections.append({"question": q.Question, "correct": chosen == good.ID,
+                            "bonne_reponse": good.Rep, "reponse": selected.Rep if selected else None})
+    correct = sum(c["correct"] for c in corrections)
+    score = round(100 * correct / len(corrections), 2)
+    user = UtilisateurDB(Username=payload.Username)
+    db.add(ParticipationDB(utilisateur=user, questionnaire=quiz, Score=score))
+    db.flush()
+    quiz.Note_Moyenne = round(db.scalar(select(func.avg(ParticipationDB.Score))
+                                      .where(ParticipationDB.ID_Questionnaire == quiz_id)), 2)
     db.commit()
-
-    # 3. Recalculer la note moyenne du questionnaire
-    avg_score = db.query(func.avg(ParticipationDB.Score)).filter(ParticipationDB.ID_Questionnaire == quiz_id).scalar()
-    db_quiz.Note_Moyenne = round(avg_score, 2)
-    db.commit()
-
-    return {"message": "Score enregistré", "nouvelle_moyenne_quiz": db_quiz.Note_Moyenne}
+    return {"score": score, "correct": correct, "total": len(corrections),
+            "corrections": corrections, "nouvelle_moyenne_quiz": quiz.Note_Moyenne}

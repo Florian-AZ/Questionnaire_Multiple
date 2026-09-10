@@ -1,0 +1,650 @@
+[
+  {
+    "Name": "Spécial années 2000",
+    "Type": "Culture générale",
+    "questions": [
+      {
+        "Question": "Quel réseau social Mark Zuckerberg a-t-il lancé en 2004 ?",
+        "reponses": [
+          {
+            "Rep": "Facebook",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Twitter",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Instagram",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Snapchat",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quelle console de Nintendo, sortie en 2006, se joue avec une télécommande à détection de mouvement ?",
+        "reponses": [
+          {
+            "Rep": "La Wii",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "La GameCube",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "La Xbox 360",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "La PlayStation 3",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quel film de James Cameron sorti en 2009 a battu le record du box-office mondial ?",
+        "reponses": [
+          {
+            "Rep": "Avatar",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Titanic",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Le Roi Lion",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Jurassic Park",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quelle chanteuse a sorti l'album « Back to Black » en 2006 ?",
+        "reponses": [
+          {
+            "Rep": "Amy Winehouse",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Adele",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Rihanna",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Duffy",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "En quelle année les pièces et billets en euros sont-ils entrés en circulation ?",
+        "reponses": [
+          {
+            "Rep": "2002",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "1999",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "2000",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "2004",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quel baladeur lancé par Apple en 2001 a changé l'écoute de la musique ?",
+        "reponses": [
+          {
+            "Rep": "L'iPod",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Le Walkman",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Le Zune",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Le Discman",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quel pays a organisé la Coupe du monde de football en 2006 ?",
+        "reponses": [
+          {
+            "Rep": "L'Allemagne",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "La France",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "L'Afrique du Sud",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Le Japon",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quelle série lancée en 2004 suit des rescapés d'un crash sur une île mystérieuse ?",
+        "reponses": [
+          {
+            "Rep": "Lost",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Prison Break",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Heroes",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Dexter",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "En quelle année Google est-il entré en bourse ?",
+        "reponses": [
+          {
+            "Rep": "2004",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "1998",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "2001",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "2008",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quel film d'animation Pixar de 2003 raconte la recherche d'un poisson-clown ?",
+        "reponses": [
+          {
+            "Rep": "Le Monde de Nemo",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Wall-E",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Ratatouille",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Là-haut",
+            "Is_Correct": "Faux"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Cinéma : les incontournables",
+    "Type": "Cinéma",
+    "questions": [
+      {
+        "Question": "Qui a réalisé « Titanic », sorti en 1997 ?",
+        "reponses": [
+          {
+            "Rep": "James Cameron",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Steven Spielberg",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Ridley Scott",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Martin Scorsese",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Dans quelle saga trouve-t-on la planète Tatooine ?",
+        "reponses": [
+          {
+            "Rep": "Star Wars",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Dune",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Star Trek",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Le Cinquième Élément",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quel acteur incarne Jack Sparrow dans « Pirates des Caraïbes » ?",
+        "reponses": [
+          {
+            "Rep": "Johnny Depp",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Orlando Bloom",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Javier Bardem",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Brad Pitt",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Dans quel royaume imaginaire se déroule « Game of Thrones » ?",
+        "reponses": [
+          {
+            "Rep": "Westeros",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Narnia",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "La Terre du Milieu",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Panem",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quel studio a produit « Toy Story », premier long-métrage entièrement en images de synthèse ?",
+        "reponses": [
+          {
+            "Rep": "Pixar",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "DreamWorks",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Illumination",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Blue Sky",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quel film de Bong Joon-ho a remporté l'Oscar du meilleur film en 2020 ?",
+        "reponses": [
+          {
+            "Rep": "Parasite",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Roma",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "1917",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Joker",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Dans « Retour vers le futur », quel véhicule sert de machine à voyager dans le temps ?",
+        "reponses": [
+          {
+            "Rep": "Une DeLorean",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Une Coccinelle",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Un bus scolaire",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Une Chevrolet",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quelle actrice incarne Hermione Granger dans les films Harry Potter ?",
+        "reponses": [
+          {
+            "Rep": "Emma Watson",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Emma Stone",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Bonnie Wright",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Evanna Lynch",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quel réalisateur japonais a signé « Le Voyage de Chihiro » ?",
+        "reponses": [
+          {
+            "Rep": "Hayao Miyazaki",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Isao Takahata",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Makoto Shinkai",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Mamoru Hosoda",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quel film a lancé l'univers cinématographique Marvel en 2008 ?",
+        "reponses": [
+          {
+            "Rep": "Iron Man",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Avengers",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Thor",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Captain America",
+            "Is_Correct": "Faux"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Voyage dans le système solaire",
+    "Type": "Sciences",
+    "questions": [
+      {
+        "Question": "Quelle est la planète la plus proche du Soleil ?",
+        "reponses": [
+          {
+            "Rep": "Mercure",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Vénus",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Mars",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "La Terre",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quelle est la plus grande planète du système solaire ?",
+        "reponses": [
+          {
+            "Rep": "Jupiter",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Saturne",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Neptune",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Uranus",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Combien de temps met la lumière du Soleil pour nous parvenir ?",
+        "reponses": [
+          {
+            "Rep": "Environ 8 minutes",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Environ 8 secondes",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Environ 1 heure",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Environ 1 jour",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Sur quelle planète se trouve Olympus Mons, le plus grand volcan connu ?",
+        "reponses": [
+          {
+            "Rep": "Mars",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Vénus",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Jupiter",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Mercure",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quelle sonde lancée en 1977 a quitté l'héliosphère en 2012 ?",
+        "reponses": [
+          {
+            "Rep": "Voyager 1",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Pioneer 10",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Cassini",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "New Horizons",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quel satellite de Saturne possède une atmosphère dense et des lacs de méthane ?",
+        "reponses": [
+          {
+            "Rep": "Titan",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Europe",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Ganymède",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Phobos",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Quelle planète tourne pratiquement couchée sur son orbite ?",
+        "reponses": [
+          {
+            "Rep": "Uranus",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Neptune",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Vénus",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Saturne",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "Une année-lumière mesure quoi, exactement ?",
+        "reponses": [
+          {
+            "Rep": "Une distance",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "Une durée",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Une vitesse",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "Une masse",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "En quelle année ont eu lieu les premiers pas sur la Lune ?",
+        "reponses": [
+          {
+            "Rep": "1969",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "1961",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "1972",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "1957",
+            "Is_Correct": "Faux"
+          }
+        ]
+      },
+      {
+        "Question": "De quoi les anneaux de Saturne sont-ils principalement composés ?",
+        "reponses": [
+          {
+            "Rep": "De blocs de glace",
+            "Is_Correct": "Vrai"
+          },
+          {
+            "Rep": "De gaz",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "De poussière métallique",
+            "Is_Correct": "Faux"
+          },
+          {
+            "Rep": "De lave refroidie",
+            "Is_Correct": "Faux"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,8 +1,6 @@
-from fastapi import FastAPI
+"""Run from this folder with: python -m uvicorn main:app --reload."""
+from Backend.app import app
 
-app = FastAPI()
-
-
-@app.get("/")
-def root():
-    return {"message": "API Questionnaire Multiple"}
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="127.0.0.1", port=8000)
