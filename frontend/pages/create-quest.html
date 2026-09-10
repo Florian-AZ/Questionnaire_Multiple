@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Créez votre questionnaire Quizzhub : titre, thème, musique d'ambiance, puis vos questions.">
+    <meta name="theme-color" content="#46178F">
+    <link rel="icon" href="../assets/favicon.png" type="image/png">
+    <title>Créer un questionnaire — Quizzhub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/create-quest.css">
+
+    <script src="../script/create-quest.js" defer></script>
+</head>
+<body class="page-create">
+    <a class="skip-link" href="#main">Aller au contenu</a>
+
+    <!-- ============================= HEADER ============================= -->
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="brand" aria-label="Quizzhub, accueil">
+                <img src="../assets/logo.png" alt="Quizzhub" class="brand__logo">
+            </a>
+
+            <ol class="stepper" id="stepper">
+                <li class="stepper__item is-on"><span>1</span> Réglages</li>
+                <li class="stepper__item"><span>2</span> Questions</li>
+            </ol>
+
+            <div class="site-header__actions">
+                <a href="index.html" class="btn btn--link">Quitter</a>
+                <button type="button" class="btn btn--white" id="btn-save">Enregistrer</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="creator">
+        <div class="shapes" aria-hidden="true">
+            <i class="shape shape--triangle shapes__item shapes__item--1"></i>
+            <i class="shape shape--circle   shapes__item shapes__item--2"></i>
+            <i class="shape shape--square   shapes__item shapes__item--3"></i>
+            <i class="shape shape--diamond  shapes__item shapes__item--4"></i>
+        </div>
+
+        <!-- ======================= ÉTAPE 1 · RÉGLAGES ======================= -->
+        <section class="stage" id="stage-1">
+            <div class="container stage__inner">
+                <h1 class="stage__title">Nouveau quiz</h1>
+                <p class="stage__sub">Les infos d'abord, les questions ensuite.</p>
+
+                <form class="card setup" id="setup-form" novalidate>
+                    <!-- Titre -->
+                    <div class="field">
+                        <label for="quiz-title">Titre du quiz <b class="req">*</b></label>
+                        <input type="text" id="quiz-title" name="title" maxlength="70"
+                               placeholder="Spécial années 2000" autocomplete="off">
+                        <small class="hint">Il s'affiche en grand sur l'écran des joueurs.</small>
+                    </div>
+
+                    <!-- Résumé -->
+                    <div class="field">
+                        <label for="quiz-summary">Résumé</label>
+                        <textarea id="quiz-summary" name="summary" rows="3" maxlength="240"
+                                  placeholder="De quoi ça parle, pour qui, quel niveau…"></textarea>
+                        <small class="hint">Facultatif. Il s'affiche sur la carte du catalogue.</small>
+                    </div>
+
+                    <!-- Thème -->
+                    <fieldset class="field">
+                        <legend>Thème <b class="req">*</b></legend>
+
+                        <div class="picks">
+                            <label class="pick">
+                                <input type="radio" name="theme" value="Culture G" data-emoji="🧠">
+                                <span class="pick__box"><span class="pick__emoji">🧠</span> Culture G</span>
+                            </label>
+                            <label class="pick">
+                                <input type="radio" name="theme" value="Sciences" data-emoji="🔬">
+                                <span class="pick__box"><span class="pick__emoji">🔬</span> Sciences</span>
+                            </label>
+                            <label class="pick">
+                                <input type="radio" name="theme" value="Ciné &amp; séries" data-emoji="🎬">
+                                <span class="pick__box"><span class="pick__emoji">🎬</span> Ciné &amp; séries</span>
+                            </label>
+                            <label class="pick">
+                                <input type="radio" name="theme" value="Histoire" data-emoji="🏛️">
+                                <span class="pick__box"><span class="pick__emoji">🏛️</span> Histoire</span>
+                            </label>
+                            <label class="pick">
+                                <input type="radio" name="theme" value="Sport" data-emoji="⚽">
+                                <span class="pick__box"><span class="pick__emoji">⚽</span> Sport</span>
+                            </label>
+                            <label class="pick">
+                                <input type="radio" name="theme" value="Musique" data-emoji="🎵">
+                                <span class="pick__box"><span class="pick__emoji">🎵</span> Musique</span>
+                            </label>
+                            <label class="pick">
+                                <input type="radio" name="theme" value="Code" data-emoji="💻">
+                                <span class="pick__box"><span class="pick__emoji">💻</span> Code</span>
+                            </label>
+                            <label class="pick">
+                                <input type="radio" name="theme" value="Géographie" data-emoji="🗺️">
+                                <span class="pick__box"><span class="pick__emoji">🗺️</span> Géographie</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <!-- Musique -->
+                    <div class="field">
+                        <label for="quiz-music">Musique d'ambiance <span class="tag-yt">YouTube</span></label>
+                        <div class="yt">
+                            <span class="yt__icon" aria-hidden="true">▶</span>
+                            <input type="url" id="quiz-music" name="music"
+                                   placeholder="https://www.youtube.com/watch?v=…" autocomplete="off">
+                        </div>
+                        <small class="hint">Facultatif. Elle tourne en fond pendant la partie.</small>
+                    </div>
+
+                    <p class="form-error" id="setup-error" role="alert" hidden></p>
+
+                    <button type="submit" class="btn btn--green btn--xl setup__go">
+                        Passer aux questions
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ======================= ÉTAPE 2 · QUESTIONS ======================= -->
+        <section class="stage" id="stage-2" hidden>
+            <div class="container">
+                <div class="deck-head">
+                    <div class="deck-head__info">
+                        <span class="tag" id="recap-theme">🧠 Culture G</span>
+                        <h2 id="recap-title">Mon questionnaire</h2>
+                    </div>
+                    <button type="button" class="btn btn--link" id="btn-back">← Modifier les infos</button>
+                </div>
+
+                <div class="deck">
+                    <button type="button" class="arrow arrow--prev" id="btn-prev" aria-label="Question précédente">←</button>
+
+                    <div class="deck__viewport" id="deck"><!-- les slides sont injectées ici --></div>
+
+                    <button type="button" class="arrow arrow--next" id="btn-next" aria-label="Question suivante">→</button>
+                </div>
+
+                <div class="deck-foot">
+                    <span class="counter">Question <b id="cur">1</b> sur <b id="total">1</b></span>
+                    <div class="dots" id="dots" aria-hidden="true"></div>
+                    <div class="deck-foot__btns">
+                        <button type="button" class="btn btn--yellow" id="btn-add-question">+ Nouvelle question</button>
+                        <button type="button" class="btn btn--green" id="btn-finish">Terminer le quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================== GABARIT SLIDE ========================== -->
+    <template id="tpl-slide">
+        <article class="slide">
+            <header class="slide__head">
+                <span class="slide__badge">Question <b class="slide__num">1</b></span>
+                <span class="slide__timer">20 s</span>
+            </header>
+
+            <input type="text" class="slide__title" maxlength="120"
+                   placeholder="Titre de la question…" aria-label="Titre de la question">
+
+            <input type="text" class="slide__note" maxlength="120"
+                   placeholder="Précisions (facultatif)" aria-label="Précisions">
+
+            <div class="answers-head">
+                <h3>Réponses <em>(3 minimum)</em></h3>
+                <span class="answers-head__hint">Coche la bonne réponse</span>
+            </div>
+
+            <div class="answers"><!-- les réponses sont injectées ici --></div>
+
+            <button type="button" class="add-answer">
+                <span aria-hidden="true">+</span> Ajouter une réponse
+            </button>
+        </article>
+    </template>
+
+    <!-- ========================= GABARIT RÉPONSE ========================= -->
+    <template id="tpl-answer">
+        <div class="answer">
+            <span class="answer__shape" aria-hidden="true"><i class="shape"></i></span>
+            <input type="text" class="answer__input" maxlength="90" placeholder="Réponse…" aria-label="Réponse">
+            <label class="answer__good" title="Bonne réponse">
+                <input type="radio">
+                <span aria-hidden="true">✓</span>
+                <span class="visually-hidden">Marquer comme bonne réponse</span>
+            </label>
+            <button type="button" class="answer__del" aria-label="Supprimer cette réponse">×</button>
+        </div>
+    </template>
+</body>
+</html>
