@@ -76,7 +76,7 @@ Dans les étapes suivantes, remplacer `.\.venv\Scripts\python.exe` par `.venv/bi
 ### Depuis VS Code
 
 ```powershell
-.\.venv\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+.\.venv\Scripts\python.exe -m uvicorn main:app --reload --port 8001
 ```
 
 Attendre les messages `Application startup complete` et `Uvicorn running on http://127.0.0.1:8000`, puis ouvrir [le site](http://127.0.0.1:8000).
