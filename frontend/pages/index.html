@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quizzhub : crée un quiz, partage le lien, joue.">
+    <meta name="theme-color" content="#46178F">
+    <link rel="icon" href="../assets/favicon.png" type="image/png">
+    <title>Quizzhub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <!-- Menu mobile (CSS-only) -->
+    <input type="checkbox" id="nav-switch" class="visually-hidden" aria-label="Ouvrir le menu">
+
+    <a class="skip-link" href="#main">Aller au contenu</a>
+
+    <!-- ============================= HEADER ============================= -->
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="brand" aria-label="Quizzhub, accueil">
+                <img src="../assets/logo.png" alt="Quizzhub" class="brand__logo">
+            </a>
+
+            <nav class="site-nav" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="catalogue.html">Catalogue</a></li>
+                    <li><a href="#comment">Comment ça marche</a></li>
+                    <li><a href="create-quest.html">Créer</a></li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="#" class="btn btn--link">Se connecter</a>
+                <a href="#" class="btn btn--white">S'inscrire</a>
+
+                <label class="burger" for="nav-switch">
+                    <span></span><span></span><span></span>
+                    <span class="visually-hidden">Ouvrir le menu</span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- ============================== HERO ============================== -->
+        <section class="hero">
+            <div class="shapes" aria-hidden="true">
+                <i class="shape shape--triangle shapes__item shapes__item--1"></i>
+                <i class="shape shape--circle   shapes__item shapes__item--2"></i>
+                <i class="shape shape--square   shapes__item shapes__item--3"></i>
+                <i class="shape shape--diamond  shapes__item shapes__item--4"></i>
+                <i class="shape shape--circle   shapes__item shapes__item--5"></i>
+                <i class="shape shape--triangle shapes__item shapes__item--6"></i>
+            </div>
+
+            <div class="container hero__inner">
+                <h1 class="hero__title">
+                    Crée ton quiz,<br>
+                    <span class="hl">fais jouer tout le monde</span>
+                </h1>
+
+                <p class="hero__text">
+                    Pioche dans le catalogue ou écris tes propres questions,
+                    puis partage le lien.
+                </p>
+
+                <div class="hero__btns">
+                    <a href="create-quest.html" class="btn btn--green btn--xl">Créer mon quiz</a>
+                    <a href="catalogue.html" class="btn btn--outline btn--xl">Voir le catalogue</a>
+                </div>
+            </div>
+
+            <span class="wave" aria-hidden="true"></span>
+        </section>
+
+        <!-- ========================= COMMENT ÇA MARCHE ======================= -->
+        <section class="section" id="comment">
+            <div class="container">
+                <h2 class="section-title">Comment <span class="hl hl--yellow">ça marche</span></h2>
+
+                <ol class="steps">
+                    <li class="step step--red">
+                        <span class="step__badge"><i class="shape shape--triangle"></i></span>
+                        <span class="step__num">1</span>
+                        <h3>Choisis un quiz</h3>
+                        <p>Pioche dans le catalogue, ou crée le tien question par question.</p>
+                    </li>
+                    <li class="step step--blue">
+                        <span class="step__badge"><i class="shape shape--diamond"></i></span>
+                        <span class="step__num">2</span>
+                        <h3>Partage le lien</h3>
+                        <p>Envoie-le à qui tu veux. Pas besoin de compte pour jouer.</p>
+                    </li>
+                    <li class="step step--green">
+                        <span class="step__badge"><i class="shape shape--square"></i></span>
+                        <span class="step__num">3</span>
+                        <h3>Réponds vite</h3>
+                        <p>Vingt secondes par question. Plus tu es rapide, plus tu marques de points.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ============================ APERÇU ============================== -->
+        <section class="section section--violet" id="apercu">
+            <div class="container preview">
+                <div class="preview__text">
+                    <h2 class="section-title section-title--left">Quatre couleurs,<br>une seule bonne réponse</h2>
+                    <p>Chaque question a quatre réponses et un chrono. La bonne réponse
+                        et son explication s'affichent tout de suite après.</p>
+                    <ul class="ticks">
+                        <li>Bonus pour les bonnes réponses d'affilée</li>
+                        <li>Explication après chaque question</li>
+                        <li>Récap complet à la fin</li>
+                    </ul>
+                </div>
+
+                <article class="quiz" aria-hidden="true">
+                    <header class="quiz__head">
+                        <span class="quiz__count">Question 7 / 10</span>
+                        <span class="quiz__timer">12</span>
+                    </header>
+
+                    <p class="quiz__question">Quelle planète possède le plus de lunes&nbsp;?</p>
+
+                    <div class="quiz__answers">
+                        <span class="ans ans--red"><i class="shape shape--triangle"></i> Mars</span>
+                        <span class="ans ans--blue"><i class="shape shape--diamond"></i> Jupiter</span>
+                        <span class="ans ans--yellow is-good"><i class="shape shape--circle"></i> Saturne</span>
+                        <span class="ans ans--green"><i class="shape shape--square"></i> Neptune</span>
+                    </div>
+
+                    <footer class="quiz__foot">
+                        <span class="quiz__streak">Série ×3</span>
+                        <span class="quiz__score">2 750 pts</span>
+                    </footer>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============================ THÈMES ============================= -->
+        <section class="section" id="themes">
+            <div class="container">
+                <h2 class="section-title">Choisis ton <span class="hl hl--blue">thème</span></h2>
+
+                <div class="themes">
+                    <a href="catalogue.html?theme=Culture%20G" class="theme theme--1"><span class="theme__emoji">🧠</span><h3>Culture G</h3></a>
+                    <a href="catalogue.html?theme=Sciences" class="theme theme--2"><span class="theme__emoji">🔬</span><h3>Sciences</h3></a>
+                    <a href="catalogue.html?theme=Cin%C3%A9%20%26%20s%C3%A9ries" class="theme theme--3"><span class="theme__emoji">🎬</span><h3>Ciné &amp; séries</h3></a>
+                    <a href="catalogue.html?theme=Histoire" class="theme theme--4"><span class="theme__emoji">🏛️</span><h3>Histoire</h3></a>
+                    <a href="catalogue.html?theme=Sport" class="theme theme--5"><span class="theme__emoji">⚽</span><h3>Sport</h3></a>
+                    <a href="catalogue.html?theme=Musique" class="theme theme--6"><span class="theme__emoji">🎵</span><h3>Musique</h3></a>
+                    <a href="catalogue.html?theme=Code" class="theme theme--7"><span class="theme__emoji">💻</span><h3>Code</h3></a>
+                    <a href="catalogue.html?theme=G%C3%A9ographie" class="theme theme--8"><span class="theme__emoji">🗺️</span><h3>Géographie</h3></a>
+                </div>
+
+                <p class="themes__all">
+                    <a href="catalogue.html" class="btn btn--dark btn--lg">Tout le catalogue</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================== CTA ============================== -->
+        <section class="cta">
+            <div class="container">
+                <h2>On lance une partie&nbsp;?</h2>
+                <p>Pas besoin de compte pour jouer.</p>
+                <div class="cta__btns">
+                    <a href="catalogue.html" class="btn btn--yellow btn--xl">Jouer</a>
+                    <a href="create-quest.html" class="btn btn--outline btn--xl">Créer un quiz</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================= FOOTER ============================= -->
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <a href="index.html" class="brand brand--footer" aria-label="Quizzhub, accueil">
+                <img src="../assets/logo.png" alt="Quizzhub" class="brand__logo">
+            </a>
+
+            <nav class="site-footer__nav" aria-label="Pied de page">
+                <a href="#comment">Comment ça marche</a>
+                <a href="catalogue.html">Catalogue</a>
+                <a href="create-quest.html">Créer un quiz</a>
+                <a href="#">Contact</a>
+                <a href="#">Mentions légales</a>
+            </nav>
+
+            <p class="site-footer__copy">© 2026 Quizzhub</p>
+        </div>
+    </footer>
+</body>
+</html>

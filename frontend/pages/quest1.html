@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="iPod, Wii, passage à l'euro… dix questions pour voir si la nostalgie te va bien.">
+    <meta name="theme-color" content="#46178F">
+    <link rel="icon" href="../assets/favicon.png" type="image/png">
+    <title>Spécial années 2000 — Quizzhub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+
+    <script src="../script/quiz.js" defer></script>
+</head>
+<body class="page-quiz">
+    <a class="skip-link" href="#main">Aller au contenu</a>
+
+    <!-- ============================= HEADER ============================= -->
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="brand" aria-label="Quizzhub, accueil">
+                <img src="../assets/logo.png" alt="Quizzhub" class="brand__logo">
+            </a>
+
+            <p class="quiz-title">🧠 Culture G · Spécial années 2000</p>
+
+            <div class="site-header__actions">
+                <a href="catalogue.html" class="btn btn--white btn--sm">Quitter</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="play">
+        <div class="shapes" aria-hidden="true">
+            <i class="shape shape--triangle shapes__item shapes__item--1"></i>
+            <i class="shape shape--circle   shapes__item shapes__item--2"></i>
+            <i class="shape shape--square   shapes__item shapes__item--3"></i>
+            <i class="shape shape--diamond  shapes__item shapes__item--4"></i>
+        </div>
+
+        <div class="container">
+            <!-- ========================= ÉCRAN D'INTRO ========================= -->
+            <section class="screen" id="screen-intro">
+                <div class="intro">
+                    <span class="intro__emoji" aria-hidden="true">📼</span>
+                    <span class="intro__tag">🧠 Culture G</span>
+
+                    <h1>Spécial années 2000</h1>
+                    <p class="intro__sub">iPod, Wii, passage à l'euro… dix questions pour voir si la nostalgie te va bien.</p>
+
+                    <ul class="intro__meta">
+                        <li><b class="js-total">10</b> questions</li>
+                        <li>≈ 5 min</li>
+                        <li>Niveau Moyen</li>
+                    </ul>
+
+                    <ul class="rules">
+                        <li>20 secondes par question</li>
+                        <li>Plus tu réponds vite, plus tu marques de points</li>
+                        <li>Les bonnes réponses d'affilée rapportent un bonus</li>
+                    </ul>
+
+                    <button type="button" class="btn btn--green btn--xl" id="btn-start">C'est parti&nbsp;!</button>
+                    <a href="catalogue.html" class="intro__back">← Retour au catalogue</a>
+                </div>
+            </section>
+
+            <!-- ========================== ÉCRAN DE JEU ========================== -->
+            <section class="screen" id="screen-play" hidden>
+                <div class="hud">
+                    <span class="hud__count">Question <b id="q-num">1</b>/<b id="q-total">10</b></span>
+                    <span class="hud__streak" id="streak" hidden>🔥 Série ×2</span>
+                    <span class="hud__score"><b id="score">0</b> pts</span>
+                </div>
+
+                <div class="timebar">
+                    <span class="timebar__fill" id="timebar-fill"></span>
+                    <span class="timebar__value" id="timer">20</span>
+                </div>
+
+                <div class="qcard">
+                    <p class="qcard__question" id="question">…</p>
+                    <p class="qcard__note" id="question-note" hidden></p>
+                </div>
+
+                <div class="answers" id="answers"></div>
+
+                <div class="feedback" id="feedback" hidden>
+                    <p class="feedback__title" id="fb-title"></p>
+                    <p class="feedback__text" id="fb-text"></p>
+                    <button type="button" class="btn btn--dark btn--lg" id="btn-next">Question suivante →</button>
+                </div>
+            </section>
+
+            <!-- ========================== ÉCRAN DE FIN ========================== -->
+            <section class="screen" id="screen-end" hidden>
+                <div class="end">
+                    <span class="end__emoji" id="end-emoji" aria-hidden="true">🏆</span>
+                    <h2 id="end-title">Bien joué !</h2>
+
+                    <div class="end__score">
+                        <b id="end-score">0</b>
+                        <span>points</span>
+                    </div>
+
+                    <div class="end__bar"><span id="end-bar" style="width:0"></span></div>
+
+                    <ul class="end__stats">
+                        <li><b id="end-good">0</b> / <b id="end-total">10</b> bonnes réponses</li>
+                        <li>Meilleure série : ×<b id="end-streak">0</b></li>
+                    </ul>
+
+                    <ol class="recap" id="end-recap"></ol>
+
+                    <div class="end__btns">
+                        <button type="button" class="btn btn--yellow btn--lg" id="btn-replay">Rejouer</button>
+                        <a href="catalogue.html" class="btn btn--green btn--lg">Autres questionnaires</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Questions du quiz (hors base de données, écrites en dur) -->
+    <script id="quiz-data" type="application/json">
+{
+  "titre": "Spécial années 2000",
+  "questions": [
+    {
+      "question": "Quel réseau social Mark Zuckerberg a-t-il lancé en 2004 ?",
+      "reponses": [
+        "Facebook",
+        "Twitter",
+        "Instagram",
+        "Snapchat"
+      ],
+      "bonne": 0,
+      "explication": "Facebook naît en février 2004 à Harvard. Twitter arrivera en 2006, Instagram en 2010."
+    },
+    {
+      "question": "Quelle console de Nintendo, sortie en 2006, se joue avec une télécommande à détection de mouvement ?",
+      "reponses": [
+        "La Wii",
+        "La GameCube",
+        "La Xbox 360",
+        "La PlayStation 3"
+      ],
+      "bonne": 0,
+      "explication": "La Wii et sa Wiimote ont fait bouger les salons dès novembre 2006."
+    },
+    {
+      "question": "Quel film de James Cameron sorti en 2009 a battu le record du box-office mondial ?",
+      "reponses": [
+        "Avatar",
+        "Titanic",
+        "Le Roi Lion",
+        "Jurassic Park"
+      ],
+      "bonne": 0,
+      "explication": "Avatar dépasse Titanic, du même réalisateur, dès 2010."
+    },
+    {
+      "question": "Quelle chanteuse a sorti l'album « Back to Black » en 2006 ?",
+      "reponses": [
+        "Amy Winehouse",
+        "Adele",
+        "Rihanna",
+        "Duffy"
+      ],
+      "bonne": 0,
+      "explication": "Un album culte, récompensé par cinq Grammy Awards en 2008."
+    },
+    {
+      "question": "En quelle année les pièces et billets en euros sont-ils entrés en circulation ?",
+      "reponses": [
+        "2002",
+        "1999",
+        "2000",
+        "2004"
+      ],
+      "bonne": 0,
+      "explication": "L'euro existe comme monnaie de compte depuis 1999, mais en espèces seulement au 1er janvier 2002."
+    },
+    {
+      "question": "Quel baladeur lancé par Apple en 2001 a changé l'écoute de la musique ?",
+      "reponses": [
+        "L'iPod",
+        "Le Walkman",
+        "Le Zune",
+        "Le Discman"
+      ],
+      "bonne": 0,
+      "explication": "Mille chansons dans la poche : c'était l'argument de lancement, huit ans avant l'iPhone… enfin, six."
+    },
+    {
+      "question": "Quel pays a organisé la Coupe du monde de football en 2006 ?",
+      "reponses": [
+        "L'Allemagne",
+        "La France",
+        "L'Afrique du Sud",
+        "Le Japon"
+      ],
+      "bonne": 0,
+      "explication": "L'Italie l'emporte en finale contre la France, à Berlin."
+    },
+    {
+      "question": "Quelle série lancée en 2004 suit des rescapés d'un crash sur une île mystérieuse ?",
+      "reponses": [
+        "Lost",
+        "Prison Break",
+        "Heroes",
+        "Dexter"
+      ],
+      "bonne": 0,
+      "explication": "Six saisons, une île, et beaucoup de questions restées en suspens."
+    },
+    {
+      "question": "En quelle année Google est-il entré en bourse ?",
+      "reponses": [
+        "2004",
+        "1998",
+        "2001",
+        "2008"
+      ],
+      "bonne": 0,
+      "explication": "Fondé en 1998, introduit au Nasdaq en août 2004."
+    },
+    {
+      "question": "Quel film d'animation Pixar de 2003 raconte la recherche d'un poisson-clown ?",
+      "reponses": [
+        "Le Monde de Nemo",
+        "Wall-E",
+        "Ratatouille",
+        "Là-haut"
+      ],
+      "bonne": 0,
+      "explication": "Wall-E (2008), Ratatouille (2007) et Là-haut (2009) sont plus tardifs."
+    }
+  ]
+}
+    </script>
+</body>
+</html>
