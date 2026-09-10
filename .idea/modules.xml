@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Questionnaire_Multiple.iml" filepath="$PROJECT_DIR$/.idea/Questionnaire_Multiple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/questionnaire-multiple.iml" filepath="$PROJECT_DIR$/.idea/questionnaire-multiple.iml" />
     </modules>
   </component>
 </project>

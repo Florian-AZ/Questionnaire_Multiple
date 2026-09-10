@@ -1,0 +1,45 @@
+Instructions pour configurer et lancer la base de données
+Ce document explique comment importer la base de données MySQL nécessaire au fonctionnement de l'API Backend.
+
+1. Démarrage des serveurs
+Installez et lancez un environnement de serveur local comme MAMP, XAMPP ou WAMP.
+
+Démarrez les services. Assurez-vous que le serveur MySQL est bien actif (le voyant doit être au vert).
+
+2. Importation du fichier SQL
+Ouvrez votre navigateur et accédez à phpMyAdmin (généralement accessible via la page de démarrage de MAMP).
+
+Dans le menu de gauche, cliquez sur Nouvelle pour créer une base de données.
+
+Nommez la base de données (ex: quiz_db) et cliquez sur Créer.
+
+Cliquez sur le nom de cette nouvelle base pour la sélectionner.
+
+En haut de l'écran, cliquez sur l'onglet Importer.
+
+Cliquez sur Choisir un fichier et sélectionnez le fichier .sql inclus dans ce projet.
+
+Descendez en bas de la page et cliquez sur Exécuter. Vos tables et données sont maintenant en place.
+
+3. Configuration de la connexion Python
+Pour que l'API puisse communiquer avec votre base de données locale, vous devez ajuster la configuration dans le code source :
+
+Ouvrez le fichier Backend/Functions/db_config.py.
+
+Repérez la variable DATABASE_URL.
+
+Adaptez l'URL de connexion selon votre système d'exploitation et le port utilisé par votre serveur MySQL :
+
+Si votre port est 3306 (configuration courante sous Windows) :
+Identifiant: root | Mot de passe: (vide)
+DATABASE_URL = "mysql+pymysql://root@localhost:3306/nom_de_votre_base"
+
+Si votre port est 8889 (configuration courante sous Mac ou MAMP spécifique) :
+Identifiant: root | Mot de passe: root
+DATABASE_URL = "mysql+pymysql://root:root@localhost:8889/nom_de_votre_base"
+
+Attention : Veillez à bien remplacer nom_de_votre_base par le nom exact que vous avez saisi à l'étape 2.3.
+
+4. Lancement de l'API
+Une fois la base de données importée et le fichier de configuration à jour, placez-vous dans le dossier Backend depuis votre terminal et lancez le serveur :
+python -m uvicorn app:app --reload
