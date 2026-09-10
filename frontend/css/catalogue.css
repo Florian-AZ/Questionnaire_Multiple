@@ -1,0 +1,343 @@
+/* =============================================================================
+   QUIZZHUB — catalogue.css
+   ========================================================================== */
+
+/* -----------------------------------------------------------------------------
+   1. BANDEAU D'INTRO
+-------------------------------------------------------------------------------*/
+.cat-hero {
+    position: relative;
+    padding-block: clamp(2.2rem, 6vw, 4rem) clamp(2.5rem, 6vw, 4rem);
+    background: var(--violet);
+    color: var(--blanc);
+    text-align: center;
+    overflow: hidden;
+}
+
+.cat-hero__inner { position: relative; z-index: 1; }
+
+.cat-hero h1 {
+    font-size: var(--fs-xl);
+    text-shadow: 0 4px 0 rgba(0, 0, 0, .18);
+}
+
+.cat-hero p {
+    margin-top: .7rem;
+    font-size: var(--fs-md);
+    font-weight: 600;
+    opacity: .9;
+}
+
+.cat-hero .shapes { position: absolute; inset: 0; }
+.cat-hero .shapes__item { position: absolute; opacity: .45; animation: flotte 8s ease-in-out infinite; }
+.cat-hero .shapes__item--1 { top: 18%;  left: 6%;   font-size: 34px; color: var(--jaune); }
+.cat-hero .shapes__item--2 { bottom: 14%; left: 18%; font-size: 20px; color: var(--rouge); animation-delay: -2s; }
+.cat-hero .shapes__item--3 { top: 22%;  right: 12%; font-size: 24px; color: var(--vert);  animation-delay: -4s; }
+.cat-hero .shapes__item--4 { bottom: 18%; right: 6%; font-size: 30px; color: var(--bleu); animation-delay: -6s; }
+
+/* -----------------------------------------------------------------------------
+   2. FILTREUR
+-------------------------------------------------------------------------------*/
+.filters {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 40;
+    padding-block: .9rem;
+    background: var(--blanc);
+    box-shadow: 0 4px 0 rgba(31, 18, 53, .06);
+}
+
+/* minmax(0, …) : sinon la rangée de chips (nowrap sur mobile) élargit toute la grille */
+.filters__bar { display: grid; grid-template-columns: minmax(0, 1fr); gap: .8rem; }
+
+/* --- Recherche --- */
+.search {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: 0 .9rem;
+    border: 3px solid var(--gris);
+    border-radius: var(--r-full);
+    background: var(--creme);
+    transition: border-color var(--dur) ease, background-color var(--dur) ease;
+}
+.search:focus-within { border-color: var(--violet-light); background: var(--blanc); }
+
+.search__icon { width: 18px; height: 18px; flex: none; color: var(--texte-doux); }
+.search:focus-within .search__icon { color: var(--violet); }
+
+.search input {
+    flex: 1;
+    min-width: 0;
+    padding: .7rem 0;
+    border: 0;
+    background: none;
+    font-weight: 700;
+    outline: none;
+}
+.search input::placeholder { color: #A9A2BE; font-weight: 600; }
+
+/* --- Ligne chips + selects --- */
+.filters__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+
+.chip {
+    flex: none;
+    padding: .5rem .9rem;
+    border: 3px solid var(--gris);
+    border-radius: var(--r-full);
+    background: var(--creme);
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: var(--texte-doux);
+    white-space: nowrap;
+    transition: border-color var(--dur) ease, background-color var(--dur) ease,
+                color var(--dur) ease, translate var(--dur) ease;
+}
+.chip:hover { border-color: var(--violet-light); color: var(--violet); translate: 0 -2px; }
+.chip.is-on {
+    border-color: var(--violet);
+    background: var(--violet);
+    color: var(--blanc);
+    box-shadow: 0 3px 0 var(--violet-dark);
+}
+
+.selects { display: flex; align-items: center; gap: .5rem; flex: none; }
+
+.selects select {
+    padding: .55rem .8rem;
+    border: 3px solid var(--gris);
+    border-radius: var(--r-sm);
+    background: var(--creme);
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: var(--texte);
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--dur) ease;
+}
+.selects select:hover,
+.selects select:focus { border-color: var(--violet-light); }
+
+.selects .btn--link { font-size: var(--fs-sm); color: var(--texte-doux); }
+.selects .btn--link:hover { color: var(--violet); opacity: 1; }
+
+/* -----------------------------------------------------------------------------
+   3. EN-TÊTE DE BLOC
+-------------------------------------------------------------------------------*/
+.section--pale { background: var(--creme); }
+
+.block-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+}
+
+.block-head h2 { font-size: var(--fs-xl); }
+
+.block-count { font-size: var(--fs-sm); font-weight: 700; color: var(--texte-doux); }
+.block-count b { color: var(--violet); font-weight: 900; }
+
+/* -----------------------------------------------------------------------------
+   4. CARTES DE QUESTIONNAIRE
+-------------------------------------------------------------------------------*/
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2.5vw, 1.6rem);
+}
+
+.quiz-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--r-lg);
+    background: var(--blanc);
+    box-shadow: var(--ombre-carte);
+    overflow: hidden;
+    transition: translate var(--dur) ease, box-shadow var(--dur) ease;
+}
+.quiz-card:hover { translate: 0 -6px; box-shadow: 0 12px 0 rgba(31, 18, 53, .14); }
+.quiz-card[hidden] { display: none; }
+
+/* Le lien couvre toute la carte */
+.quiz-card__link { position: absolute; inset: 0; z-index: 2; }
+.quiz-card__link:focus-visible { outline-offset: -6px; }
+
+/* --- Visuel du haut --- */
+.quiz-card__top {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 132px;
+    overflow: hidden;
+}
+.quiz-card__top--red   { background: var(--rouge); }
+.quiz-card__top--blue  { background: var(--bleu); }
+.quiz-card__top--green { background: var(--vert); }
+
+.quiz-card__emoji {
+    font-size: 3.2rem;
+    line-height: 1;
+    filter: drop-shadow(0 4px 0 rgba(0, 0, 0, .2));
+    transition: scale var(--dur) var(--ease), rotate var(--dur) var(--ease);
+}
+.quiz-card:hover .quiz-card__emoji { scale: 1.15; rotate: -6deg; }
+
+.deco { position: absolute; color: rgba(255, 255, 255, .22); }
+.deco--1 { font-size: 60px; top: -14px; right: -10px; }
+.deco--2 { font-size: 34px; bottom: -8px; left: 12%; }
+
+/* --- Corps --- */
+.quiz-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1.1rem 1.2rem 1.2rem;
+    flex: 1;
+}
+
+.tag {
+    align-self: flex-start;
+    padding: .25rem .7rem;
+    border-radius: var(--r-full);
+    background: var(--violet-pale);
+    color: var(--violet);
+    font-size: .72rem;
+    font-weight: 800;
+}
+
+.quiz-card__body h3 { font-size: var(--fs); }
+
+.quiz-card__body p {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--texte-doux);
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .3rem .5rem;
+    font-size: .72rem;
+    font-weight: 800;
+    color: var(--texte-doux);
+}
+.meta li { display: flex; align-items: center; gap: .5rem; }
+.meta li + li::before {
+    content: "";
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: .5;
+}
+
+.meta__level { padding: .1rem .5rem; border-radius: var(--r-full); color: var(--texte); }
+.meta__level--1 { background: #DCF3D6; }
+.meta__level--2 { background: #FFEFD1; }
+.meta__level--3 { background: #FFE0E5; }
+.meta li.meta__level + li::before,
+.meta li + li.meta__level::before { background: none; }
+
+.quiz-card__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    margin-top: auto;
+    padding-top: .9rem;
+}
+.quiz-card__foot .meta { flex: 1; min-width: 0; }
+
+/* Le "bouton" est décoratif : c'est le lien de la carte qui agit */
+.quiz-card__foot .btn { pointer-events: none; }
+.quiz-card:hover .quiz-card__foot .btn { translate: 0 -2px; box-shadow: 0 7px 0 rgba(0, 0, 0, .22); }
+
+/* -----------------------------------------------------------------------------
+   5. ÉTATS VIDES
+-------------------------------------------------------------------------------*/
+.no-result {
+    padding: 2rem;
+    border: 3px dashed var(--gris);
+    border-radius: var(--r-lg);
+    text-align: center;
+    font-weight: 800;
+    color: var(--texte-doux);
+}
+.no-result[hidden] { display: none; }
+
+.empty {
+    display: grid;
+    justify-items: center;
+    gap: .6rem;
+    padding: clamp(2rem, 5vw, 3.5rem) 1.5rem;
+    border: 3px dashed #D9D2EA;
+    border-radius: var(--r-lg);
+    background: var(--blanc);
+    text-align: center;
+}
+.empty[hidden] { display: none; }
+
+.empty__shapes {
+    display: flex;
+    gap: .6rem;
+    font-size: 22px;
+    margin-bottom: .4rem;
+}
+.empty__shapes .shape:nth-child(1) { color: var(--rouge); animation: flotte 4s ease-in-out infinite; }
+.empty__shapes .shape:nth-child(2) { color: var(--bleu);  animation: flotte 4s ease-in-out infinite -1s; }
+.empty__shapes .shape:nth-child(3) { color: var(--jaune); animation: flotte 4s ease-in-out infinite -2s; }
+.empty__shapes .shape:nth-child(4) { color: var(--vert);  animation: flotte 4s ease-in-out infinite -3s; }
+
+.empty h3 { font-size: var(--fs-lg); }
+.empty p { font-weight: 600; color: var(--texte-doux); }
+.empty .btn { margin-top: .8rem; }
+
+/* -----------------------------------------------------------------------------
+   6. NAV : onglet actif
+-------------------------------------------------------------------------------*/
+.site-nav a.is-on { background: rgba(255, 255, 255, .22); }
+
+/* -----------------------------------------------------------------------------
+   7. RESPONSIVE
+-------------------------------------------------------------------------------*/
+@media (max-width: 940px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    /* nowrap obligatoire : en colonne + wrap, la ligne prendrait la largeur des chips */
+    .filters__row { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
+    .chips { min-width: 0; }
+    .selects { flex-wrap: wrap; }
+    .selects select { flex: 1; }
+
+    /* Sur écran étroit, les thèmes défilent sur une ligne */
+    .chips {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: .2rem;
+        scrollbar-width: none;
+    }
+    .chips::-webkit-scrollbar { display: none; }
+}
+
+@media (max-width: 860px) {
+    .filters { top: 0; }
+}
+
+@media (max-width: 620px) {
+    .grid { grid-template-columns: 1fr; }
+    .block-head { flex-direction: column; align-items: flex-start; gap: .4rem; }
+}

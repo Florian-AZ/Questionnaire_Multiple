@@ -1,0 +1,353 @@
+/* =============================================================================
+   QUIZZHUB — index.css  ·  page d'accueil
+   ========================================================================== */
+
+/* -----------------------------------------------------------------------------
+   1. HERO
+-------------------------------------------------------------------------------*/
+.hero {
+    position: relative;
+    padding-block: clamp(3.5rem, 8vw, 6rem) clamp(5.5rem, 10vw, 8.5rem);
+    background: var(--violet);
+    color: var(--blanc);
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero__inner { position: relative; z-index: 1; }
+
+.hero__title {
+    font-size: var(--fs-2xl);
+    text-shadow: 0 4px 0 rgba(0, 0, 0, .18);
+}
+
+.hero__text {
+    max-width: 38ch;
+    margin: 1.3rem auto 0;
+    font-size: var(--fs-md);
+    font-weight: 600;
+    opacity: .92;
+}
+
+.hero__btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .9rem;
+    margin-top: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+/* --- Formes flottantes --- */
+.shapes { position: absolute; inset: 0; z-index: 0; }
+
+.shapes__item {
+    position: absolute;
+    opacity: .6;
+    animation: flotte 7s ease-in-out infinite;
+}
+
+.shapes__item--1 { top: 12%;  left: 6%;   font-size: 54px; color: var(--jaune); }
+.shapes__item--2 { top: 26%;  right: 9%;  font-size: 38px; color: var(--rouge); animation-delay: -1.5s; }
+.shapes__item--3 { bottom: 22%; left: 12%; font-size: 30px; color: var(--vert);  animation-delay: -3s; }
+.shapes__item--4 { top: 58%;  right: 15%; font-size: 46px; color: var(--bleu);   animation-delay: -2.2s; }
+.shapes__item--5 { top: 8%;   right: 26%; font-size: 20px; color: var(--vert);   animation-delay: -4s; }
+.shapes__item--6 { bottom: 12%; right: 5%; font-size: 26px; color: var(--jaune); animation-delay: -5s; }
+
+/* --- Vague blanche en bas du hero --- */
+.wave {
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    bottom: -1px;
+    height: clamp(40px, 6vw, 80px);
+    background: var(--blanc);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+/* -----------------------------------------------------------------------------
+   2. ÉTAPES
+-------------------------------------------------------------------------------*/
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2.5vw, 1.8rem);
+}
+
+.step {
+    position: relative;
+    padding: 2.4rem 1.5rem 1.8rem;
+    border-radius: var(--r-lg);
+    background: var(--creme);
+    box-shadow: var(--ombre-carte);
+    text-align: center;
+    transition: translate var(--dur) ease, box-shadow var(--dur) ease;
+}
+.step:hover { translate: 0 -6px; box-shadow: 0 12px 0 rgba(31, 18, 53, .12); }
+
+.step__badge {
+    display: grid;
+    place-items: center;
+    width: 64px; height: 64px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    font-size: 26px;
+    color: var(--blanc);
+    box-shadow: 0 5px 0 rgba(0, 0, 0, .18);
+}
+.step--red   .step__badge { background: var(--rouge); }
+.step--blue  .step__badge { background: var(--bleu); }
+.step--green .step__badge { background: var(--vert); }
+
+.step__num {
+    position: absolute;
+    top: .8rem; right: 1.2rem;
+    font-size: 2.6rem;
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(31, 18, 53, .1);
+}
+
+.step h3 { font-size: var(--fs-lg); margin-bottom: .5rem; }
+.step p { font-size: var(--fs-sm); font-weight: 600; color: var(--texte-doux); }
+
+/* -----------------------------------------------------------------------------
+   3. APERÇU DU JEU
+-------------------------------------------------------------------------------*/
+.preview {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4rem);
+}
+
+.preview__text p {
+    margin-bottom: 1.4rem;
+    font-size: var(--fs-md);
+    font-weight: 600;
+    opacity: .92;
+}
+
+.ticks { display: grid; gap: .6rem; font-weight: 700; }
+.ticks li { display: flex; align-items: center; gap: .7rem; }
+.ticks li::before {
+    content: "✓";
+    display: grid;
+    place-items: center;
+    width: 26px; height: 26px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--vert);
+    color: var(--blanc);
+    font-size: .8rem;
+    font-weight: 900;
+}
+
+/* --- La carte de question --- */
+.quiz {
+    padding: 1.3rem;
+    border-radius: var(--r-lg);
+    background: var(--blanc);
+    color: var(--texte);
+    box-shadow: 0 10px 0 rgba(0, 0, 0, .18), var(--ombre-douce);
+    rotate: -1deg;
+    transition: rotate .3s ease;
+}
+.quiz:hover { rotate: 0deg; }
+
+.quiz__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: var(--texte-doux);
+}
+
+.quiz__timer {
+    display: grid;
+    place-items: center;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--violet);
+    color: var(--blanc);
+    font-size: 1.15rem;
+    font-weight: 900;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.quiz__question {
+    padding: 1.1rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--r);
+    background: var(--violet-pale);
+    font-size: var(--fs-lg);
+    font-weight: 800;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.quiz__answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .6rem;
+}
+
+.ans {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .9rem 1rem;
+    border-radius: var(--r-sm);
+    color: var(--blanc);
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, .22);
+    transition: translate var(--dur) ease, box-shadow var(--dur) ease;
+}
+.ans .shape { font-size: 15px; }
+
+.ans--red    { background: var(--rouge); }
+.ans--blue   { background: var(--bleu); }
+.ans--yellow { background: var(--jaune); color: var(--texte); }
+.ans--green  { background: var(--vert); }
+
+.ans:hover { translate: 0 -3px; box-shadow: 0 7px 0 rgba(0, 0, 0, .22); }
+
+/* La bonne réponse : léger halo */
+.ans.is-good {
+    outline: 4px solid var(--blanc);
+    outline-offset: -4px;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, .22), 0 0 0 5px rgba(255, 166, 2, .45);
+}
+
+.quiz__foot {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: var(--texte-doux);
+}
+.quiz__streak {
+    padding: .2rem .7rem;
+    border-radius: var(--r-full);
+    background: var(--jaune);
+    color: var(--texte);
+}
+.quiz__score { color: var(--violet); }
+
+/* -----------------------------------------------------------------------------
+   4. THÈMES
+-------------------------------------------------------------------------------*/
+.themes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(.8rem, 2vw, 1.2rem);
+}
+
+.theme {
+    --tint: var(--violet-pale);
+    --accent: var(--violet);
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    padding: .9rem 1.1rem .9rem .9rem;
+    border-radius: var(--r-lg);
+    background: var(--creme);
+    box-shadow: var(--ombre-carte);
+    transition: translate var(--dur) ease, box-shadow var(--dur) ease, background-color var(--dur) ease;
+}
+
+.theme__emoji {
+    display: grid;
+    place-items: center;
+    width: 52px; height: 52px;
+    flex: none;
+    border-radius: 16px;
+    background: var(--tint);
+    font-size: 1.6rem;
+    line-height: 1;
+    transition: scale var(--dur) var(--ease), rotate var(--dur) var(--ease);
+}
+
+.theme h3 { font-size: var(--fs); }
+
+.theme:hover { translate: 0 -5px; box-shadow: 0 11px 0 rgba(31, 18, 53, .14); background: var(--tint); }
+.theme:hover .theme__emoji { scale: 1.15; rotate: -8deg; background: var(--blanc); }
+
+/* Une couleur par thème */
+.theme--1 { --tint: #FFE3E8; }
+.theme--2 { --tint: #DDEBFF; }
+.theme--3 { --tint: #FFEFD1; }
+.theme--4 { --tint: #E1F5DC; }
+.theme--5 { --tint: #EFE3FF; }
+.theme--6 { --tint: #FFE3E8; }
+.theme--7 { --tint: #DDEBFF; }
+.theme--8 { --tint: #E1F5DC; }
+
+.themes__all {
+    margin-top: clamp(1.6rem, 4vw, 2.4rem);
+    text-align: center;
+}
+
+/* -----------------------------------------------------------------------------
+   5. CTA
+-------------------------------------------------------------------------------*/
+.cta {
+    padding-block: clamp(3.5rem, 8vw, 6rem);
+    background: var(--violet-dark);
+    color: var(--blanc);
+    text-align: center;
+}
+
+.cta h2 { font-size: var(--fs-xl); }
+
+.cta p {
+    margin: .8rem auto 2rem;
+    font-size: var(--fs-md);
+    font-weight: 600;
+    opacity: .85;
+}
+
+.cta__btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .9rem;
+}
+
+/* -----------------------------------------------------------------------------
+   6. RESPONSIVE
+-------------------------------------------------------------------------------*/
+@media (max-width: 900px) {
+    .preview { grid-template-columns: 1fr; }
+    .section-title--left { text-align: center; }
+    .preview__text { text-align: center; }
+    .ticks { justify-items: center; }
+
+    .themes { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+    .steps { grid-template-columns: 1fr; }
+    .step { padding-block: 1.8rem 1.5rem; }
+
+    /* On garde juste deux formes pour ne pas gêner le texte */
+    .shapes__item--1,
+    .shapes__item--2,
+    .shapes__item--3,
+    .shapes__item--5 { display: none; }
+    .shapes__item--4 { top: 4%; right: 6%; font-size: 34px; }
+    .shapes__item--6 { bottom: 16%; left: 6%; }
+}
+
+@media (max-width: 520px) {
+    .themes { grid-template-columns: repeat(2, 1fr); }
+    .theme { flex-direction: column; text-align: center; gap: .6rem; padding: 1.1rem .8rem; }
+    .quiz__answers { grid-template-columns: 1fr; }
+
+    .btn--xl { width: 100%; }
+    .hero__btns,
+    .cta__btns { flex-direction: column; }
+}
